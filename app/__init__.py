@@ -50,7 +50,7 @@ def update_bikeShop(bikeShopId):
     return jsonify({'bikeShop': bikeShop.serialize})
 
 @app.route('/bikeShops/<int:bikeShopId>', methods=['DELETE'])
-def delete_bikeShop(bikeShopIdd):
+def delete_bikeShop(bikeShopId):
     bikeShop = BikeShop.query.get(bikeShopId)
     db.session.delete(bikeShop)
     db.session.commit()
