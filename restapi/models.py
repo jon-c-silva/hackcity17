@@ -1,4 +1,4 @@
-from app import db
+from restapi import db
 
 class BikeShop(db.Model):
     id = db.Column(db.Integer, primary_key=True)

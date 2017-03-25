@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-from app import app
-app.run(debug=True)
+from restapi import restapi
+restapi.run(debug=True)

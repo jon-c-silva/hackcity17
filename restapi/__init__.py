@@ -1,28 +1,28 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config.from_object('config')
-db = SQLAlchemy(app)
+restapi = Flask(__name__)
+restapi.config.from_object('config')
+db = SQLAlchemy(restapi)
 
-from app.models import BikeShop
+from restapi.models import BikeShop
 
 
-@app.route('/bikeShops', methods=['GET'])
+@restapi.route('/bikeShops', methods=['GET'])
 def get_bikeShops():
     return jsonify(json_list=[bs.serialize for bs in BikeShop.query.all()])
 
-@app.route('/bikeShops/<int:bikeShopId>', methods=['GET'])
+@restapi.route('/bikeShops/<int:bikeShopId>', methods=['GET'])
 def get_bikeShop(bikeShopId):
     bikeShop = BikeShop.query.get(bikeShopId)
     print(bikeShop)
     return jsonify({'bikeShop': bikeShop.serialize})
 
-@app.errorhandler(404)
+@restapi.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
-@app.route('/bikeShops', methods=['POST'])
+@restapi.route('/bikeShops', methods=['POST'])
 def create_bikeShop():
     if not request.json or not all(field in request.json for field in ['name', 'latitude', 'longitude']):
         abort(400)
@@ -37,7 +37,7 @@ def create_bikeShop():
     db.session.commit()
     return jsonify({'bikeShop': bikeShop.serialize}), 201
 
-@app.route('/bikeShops/<int:bikeShopId>', methods=['PUT'])
+@restapi.route('/bikeShops/<int:bikeShopId>', methods=['PUT'])
 def update_bikeShop(bikeShopId):
     bikeShop = BikeShop.query.get(bikeShopId)
     bikeShop.name = request.json.get('name', bikeShop.name)
@@ -49,7 +49,7 @@ def update_bikeShop(bikeShopId):
     db.session.commit()
     return jsonify({'bikeShop': bikeShop.serialize})
 
-@app.route('/bikeShops/<int:bikeShopId>', methods=['DELETE'])
+@restapi.route('/bikeShops/<int:bikeShopId>', methods=['DELETE'])
 def delete_bikeShop(bikeShopId):
     bikeShop = BikeShop.query.get(bikeShopId)
     db.session.delete(bikeShop)
@@ -57,7 +57,7 @@ def delete_bikeShop(bikeShopId):
     return jsonify({'result': True})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    restapi.run(debug=True)
 
 
 
