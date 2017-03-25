@@ -1,6 +1,7 @@
 from restapi import db
 
 class BikeShop(db.Model):
+    __tablename__ = "bikeshop"
     id = db.Column(db.Integer, primary_key=True)
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
@@ -14,12 +15,21 @@ class BikeShop(db.Model):
     def serialize(self):
         """Return object data in serializable format"""
         return {
-            'id'        : self.id,
-            'latitude'  : self.latitude,
-            'longitude' : self.longitude,
-            'name'      : self.name,
-            'address'   : self.address,
-            'phone'     : self.phone,
-            'website'   : self.website,
-            'postcode'  : self.postcode
+            'type'      : 'Shop',
+            'geometry':
+                {
+                    'type'          : 'point',
+                    'coordinates'   : [self.latitude, self.longitude]
+                },
+            'properties':
+            {
+                'id'        : self.id,
+                'latitude'  : self.latitude,
+                'longitude' : self.longitude,
+                'name'      : self.name,
+                'address'   : self.address,
+                'phone'     : self.phone,
+                'website'   : self.website,
+                'postcode'  : self.postcode
+            }
         }

@@ -1,5 +1,6 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
+import math
 
 restapi = Flask(__name__)
 restapi.config.from_object('config')
@@ -7,10 +8,37 @@ db = SQLAlchemy(restapi)
 
 from restapi.models import BikeShop
 
+#Roughly 1 degree of latitude = 110km
+#Roughly 1 degree of longitude == 111 * cos(latitude) km
+
+predefinedRadius = [0.5, 1, 2, 3]
+predefinedLatRadius = [x/110 for x in predefinedRadius] #in KM
+predefinedLonRadius = [lat/(111*math.cos(predefinedLatRadius[i])) for i,lat in enumerate(predefinedRadius)]
+
 
 @restapi.route('/bikeShops', methods=['GET'])
 def get_bikeShops():
-    return jsonify(json_list=[bs.serialize for bs in BikeShop.query.all()])
+    userLatitude = request.args.get('lat',None)
+    userLongitude = request.args.get('lon',None)
+    print(userLatitude, userLongitude)
+    if userLatitude is None or userLongitude is None:
+        abort(400)
+    userLatitude = float(userLatitude)
+    userLongitude = float(userLongitude)
+    userJson = {
+        'type'      : 'User',
+        'geometry'  : {
+            'type'          : 'Point',
+            'coordinates'   : [userLatitude, userLongitude]
+        },
+        'properties': {
+            'name'  : 'Your location'
+        }
+    }
+    returnList = [bs.serialize for bs in BikeShop.query.all()]
+    returnList.append(userJson)
+
+    return jsonify(json_list=returnList)
 
 @restapi.route('/bikeShops/<int:bikeShopId>', methods=['GET'])
 def get_bikeShop(bikeShopId):
@@ -55,6 +83,27 @@ def delete_bikeShop(bikeShopId):
     db.session.delete(bikeShop)
     db.session.commit()
     return jsonify({'result': True})
+
+#@restapi.route('/bikeShops/locate', methods=['GET'])
+#def get_nearest_bikeShops():
+#    userLatitude = request.args.get('lat',None)
+#    userLongitude = request.args.get('lon',None)
+#    print(userLatitude, userLongitude)
+#    if userLatitude is None or userLongitude is None:
+#        abort(400)
+#    userLatitude = float(userLatitude)
+#    userLongitude = float(userLongitude)
+#
+#    bikeShops = []
+#    for i in range(len(predefinedRadius)):
+#        bikeShops = db.session.query(BikeShop).filter(BikeShop.latitude <= userLatitude+predefinedLatRadius[i])# &
+#                             # latitude >= userLatitude-predefinedLatRadius[i] &
+#                            #  longitude <= userLongitude+predefinedLonRadius[i] &
+#                            #  longitude >= userLongitude-predefinedLonRadius[i])
+#        if(len(bikeShops) > 0):
+#            break;
+#    return jsonify(json_list=[bs.serialize for bs in bikeshops])
+
 
 if __name__ == '__main__':
     restapi.run(debug=True)
