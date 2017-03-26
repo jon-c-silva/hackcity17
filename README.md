@@ -1,11 +1,24 @@
-## FIX MY BIKE 
+## WeCycle
 
 Got a puncture on your bike?
 
-FIX MY BIKE is a service that helps cyclists find help when they need it the most.
+WeCycle is a community of cyclists to find help when they need it the most. 
 
 ### ROADMAP
 
-v1 - Find the nearest bike shops to user location (in development)
+- Find the nearest bike shops to user location
 
-v2 - Broadcast a message, asking nearby cyclists for help when bike shops are closed (planned)
+- Broadcast a message, asking nearby cyclists for help when bike shops are closed (in development)
+
+### DETAILS
+
+A REST api was developed using Python Flask, Materialize CSS and Google Maps API. Here is where the relevant stuff is:
+
+|- app 
+  |- \__init\__.py (Contains all relevant routes)
+  |- models.py (model a bikeShop to database)
+  |- templates/ (Webpages)
+    |- Index.html (main page)
+  |- static/ (CSS and javascript libraries)
+|- data (Data :D )
+|- ~~HackCity2~~ (This folder contains some mock HTML/CSS files, not really used in the app)
