@@ -15,9 +15,28 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".button-collapse").sideNav();
+        })
+    </script>
 
-    <div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
-
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href=""><i class="material-icons left">search</i>Bike Shops</a></li>
+                <li><a href="">Find Help</a></li>
+                <li><a href=""><i class="material-icons right">view_module</i>Report</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href=""><i class="material-icons left">search</i>Bike Shops</a></li>
+                <li><a href="">Find Help</a></li>
+                <li><a href=""><i class="material-icons right">view_module</i>Report</a></li>
+            </ul>
+        </div>
+    </nav>
 
 </body>
 
