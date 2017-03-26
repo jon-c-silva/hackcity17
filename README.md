@@ -25,3 +25,16 @@ A REST api was developed using Python Flask, Materialize CSS and Google Maps API
 |- data (Data :D )
 |- ~~HackCity2~~ (This folder contains some mock HTML/CSS files, not really used in the app)
 ```
+### IMAGES
+
+Find nearest bike shops
+
+![](index.png?raw=true)
+
+Ask other users for help
+
+![](people_around.png?raw=true)
+
+Menu
+
+![](menu.png?raw=true)
