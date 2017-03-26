@@ -21,7 +21,7 @@
 
         html,
         body {
-            height: 100%;
+            height: 95%;
             margin: 0;
             padding: 0;
         }
@@ -62,7 +62,7 @@
                     };
 
                     infoWindow.setPosition(pos);
-                    infoWindow.setContent('Location found.');
+                    infoWindow.setContent('<b>Your Location</b>');
                     map.setCenter(pos);
                 }, function() {
                     handleLocationError(true, infoWindow, map.getCenter());
@@ -97,25 +97,38 @@
                 imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
             });
 
+            var bikeLayer = new google.maps.BicyclingLayer();
+            bikeLayer.setMap(map);
+
         }
 
         var locations = [{
+                name: "EVANS Bikes",
+                address: "1/28 Macleay Street, Elizabeth Bay, NSW",
                 lat: 51.52813,
                 lng: -0.103755
             },
             {
+                name: "Decathlon",
+                address: "1/28 Macleay Street, Elizabeth Bay, NSW",
                 lat: 51.532090,
                 lng: -0.101523
             },
             {
+                name: "Super Bikes",
+                address: "1/28 Macleay Street, Elizabeth Bay, NSW",
                 lat: 51.528192,
                 lng: -0.096030
             },
             {
+                name: "Willy Bike Repair",
+                address: "1/28 Macleay Street, Elizabeth Bay, NSW",
                 lat: 51.525149,
                 lng: -0.108733
             },
             {
+                name: "Fix My Bike",
+                address: "1/28 Macleay Street, Elizabeth Bay, NSW",
                 lat: 51.523760,
                 lng: -0.099206
             }
