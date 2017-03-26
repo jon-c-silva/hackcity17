@@ -1,6 +1,7 @@
-from app import app
+from flask import render_template
+from restapi import restapi
 
-@app.route('/')
-@app.route('/index')
+@restapi.route('/index')
 def index():
-    return "Hello, World!"
+    user = {'name' : 'Miguel'}
+    return render_template('Index.html', title='Home',user=user)

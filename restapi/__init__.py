@@ -16,6 +16,11 @@ predefinedLatRadius = [x/110 for x in predefinedRadius] #in KM
 predefinedLonRadius = [lat/(111*math.cos(predefinedLatRadius[i])) for i,lat in enumerate(predefinedRadius)]
 
 
+@restapi.route('/index')
+def index():
+    return render_template('Index.html')
+
+
 @restapi.route('/bikeShops', methods=['GET'])
 def get_bikeShops():
     userLatitude = request.args.get('lat',None)
