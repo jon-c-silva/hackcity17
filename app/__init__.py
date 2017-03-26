@@ -20,6 +20,9 @@ predefinedLonRadius = [lat/(111*math.cos(predefinedLatRadius[i])) for i,lat in e
 def index():
     return render_template('Index.html')
 
+@app.route('/help')
+def help():
+    return render_template('help.html')
 
 @app.route('/bikeShops', methods=['GET'])
 def get_bikeShops():
