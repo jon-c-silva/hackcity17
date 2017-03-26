@@ -27,8 +27,10 @@ A REST api was developed using Python Flask, Materialize CSS and Google Maps API
 ```
 ### IMAGES
 
-- Find nearest bike shops
+Find nearest bike shops
+
 ![](index.png?raw=true)
 
-- Ask other users for help
+Ask other users for help
+
 ![](people_around.png?raw=true)
