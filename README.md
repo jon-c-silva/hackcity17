@@ -4,11 +4,13 @@ Got a puncture on your bike?
 
 WeCycle is a community of cyclists to find help when they need it the most. 
 
-### ROADMAP
+### Features
 
 - Find the nearest bike shops to user location
 
-- Broadcast a message, asking nearby cyclists for help when bike shops are closed (in development)
+- Broadcast a message, asking nearby cyclists for help when bike shops are closed
+
+- Allow users to report problems they find on their commute (road closures, etc)
 
 ### DETAILS
 
