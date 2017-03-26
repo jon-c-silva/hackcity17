@@ -57,11 +57,11 @@ def get_bikeShops():
     returnList = [bs.serialize for bs in bikeShops]
     returnList.append(userJson)
 
-    return jsonify(json_list=returnList)
+    return jsonify(features=returnList)
 
 @app.route('/bikeShops/all', methods=['GET'])
 def get_all_bikeShops():
-    return jsonify(json_list=[bs.serialize for bs in BikeShop.query.all()])
+    return jsonify([bs.serialize for bs in BikeShop.query.all()])
 
 @app.route('/bikeShops/<int:bikeShopId>', methods=['GET'])
 def get_bikeShop(bikeShopId):
