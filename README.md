@@ -1,16 +1,15 @@
 ## WeCycle
 
-Got a puncture on your bike?
-
-WeCycle is a community of cyclists to find help when they need it the most. 
+WeCycle is an app designed to bring the London cycling community closer
+By being able to find help or assist other cyclists when they most needed.
 
 ### Features
 
-- Find the nearest bike shops to user location
+-  A google map which shows your location and the location of the nearest Cycle shops for the event of a puncture, pumping some air on your wheels, etc…
 
-- Broadcast a message, asking nearby cyclists for help when bike shops are closed
+- Alternatively, one can broadcast a help message to other cyclists nearby that are using the app so that  they can assist when other means are difficult, for instance when cycle shops are closed,
 
-- Allow users to report problems they find on their commute (road closures, etc)
+- A means to flag road issues on the Google map for other cyclist to check, for instance, broken glass on the road, an accident, road works, bumps, etc….
 
 ### DETAILS
 
