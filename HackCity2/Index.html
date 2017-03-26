@@ -52,6 +52,8 @@
                 map: map
             });
 
+
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var pos = {
@@ -77,8 +79,47 @@
             script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
             document.getElementsByTagName('head')[0].appendChild(script);
 
+            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+            // Add some markers to the map.
+            // Note: The code uses the JavaScript Array.prototype.map() method to
+            // create an array of markers based on a given "locations" array.
+            // The map() method here has nothing to do with the Google Maps API.
+            var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+            });
+
+            // Add a marker clusterer to manage the markers.
+            var markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+            });
 
         }
+
+        var locations = [{
+                lat: 51.52813,
+                lng: -0.103755
+            },
+            {
+                lat: 51.532090,
+                lng: -0.101523
+            },
+            {
+                lat: 51.528192,
+                lng: -0.096030
+            },
+            {
+                lat: 51.525149,
+                lng: -0.108733
+            },
+            {
+                lat: 51.523760,
+                lng: -0.099206
+            }
+        ]
 
         // Loop through the results array and place a marker for each
         // set of coordinates.
@@ -92,6 +133,9 @@
                 });
             }
         }
+    </script>
+
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSvsuR06Ga_aY59c65tkRI0UBVPc-maDE&callback=initMap">
