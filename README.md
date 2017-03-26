@@ -14,6 +14,7 @@ WeCycle is a community of cyclists to find help when they need it the most.
 
 A REST api was developed using Python Flask, Materialize CSS and Google Maps API. Here is where the relevant stuff is:
 
+```
 |- app 
   |- \__init\__.py (Contains all relevant routes)
   |- models.py (model a bikeShop to database)
@@ -22,3 +23,4 @@ A REST api was developed using Python Flask, Materialize CSS and Google Maps API
   |- static/ (CSS and javascript libraries)
 |- data (Data :D )
 |- ~~HackCity2~~ (This folder contains some mock HTML/CSS files, not really used in the app)
+```
