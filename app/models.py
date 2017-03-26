@@ -1,4 +1,4 @@
-from restapi import db
+from app import db
 
 class BikeShop(db.Model):
     __tablename__ = "bikeshop"
